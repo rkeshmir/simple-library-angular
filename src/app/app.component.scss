@@ -1,29 +1,27 @@
-/* AppComponent's private CSS styles */
-h1 {
-  font-size: 1.2em;
-  color: #999;
-  margin-bottom: 0;
+$font-family: 'Open Sans', 'Helvetica', 'Arial', 'sans-serif';
+body {
+  background-color: white;
+  font-family: $font-family;
 }
-h2 {
-  font-size: 2em;
-  margin-top: 0;
-  padding-top: 0;
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }
-nav a:visited, a:link {
-  color: #607D8B;
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
 }
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
+
+.navbar {
+  border-bottom: 4px solid dodgerblue;
 }
-nav a.active {
-  color: #039be5;
-}
+@import '~bootstrap/scss/bootstrap';
