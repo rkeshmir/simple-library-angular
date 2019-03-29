@@ -1,0 +1,23 @@
+.message-container {
+  position: fixed;
+  min-width: 300px;
+  min-height: 100px;
+  top: 10px;
+  right: 15px;
+  .toast {
+    position: relative;
+    .fa-exclamation-circle{
+      color: red;
+    }
+    .fa-exclamation-triangle{
+      color: orange;
+    }
+    .fa-check-circle{
+      color: lawngreen;
+    }
+    .fa-info-circle{
+      color: cyan;
+    }
+
+  }
+}

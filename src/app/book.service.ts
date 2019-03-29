@@ -86,6 +86,9 @@ export class BookService {
             .map(obj => {
               const book: Book = new Book();
               book.id = parseInt(obj['id']['__text'], 10);
+              book.original_publication_year = parseInt(obj['original_publication_year']['__text'], 10);
+              book.original_publication_month = parseInt(obj['original_publication_month']['__text'], 10);
+              book.original_publication_day = parseInt(obj['original_publication_day']['__text'], 10);
               book.title = obj['best_book']['title'];
               book.image_url = obj['best_book']['image_url'];
               book.small_image_url = obj['best_book']['small_image_url'];
@@ -98,6 +101,7 @@ export class BookService {
         catchError(this.handleError<Book[]>('searchBooks', []))
       );
   }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
@@ -106,19 +110,13 @@ export class BookService {
    */
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
-
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
 
-  /** Log a HeroService message with the MessageService */
   private log(message: string) {
     console.log(`HeroService: ${message}`);
   }

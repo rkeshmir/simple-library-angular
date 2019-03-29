@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {BookService} from '../book.service';
 import {Book} from '../book';
 import {Shelf} from '../shelf';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-shelf',
@@ -16,7 +17,7 @@ export class ShelfComponent implements OnInit {
   private Arr = Array;
   private round = Math.round;
 
-  constructor(private route: ActivatedRoute, private bookService: BookService) { }
+  constructor(private route: ActivatedRoute, private bookService: BookService, private messageService: MessageService) { }
 
   ngOnInit() {
     this.shelf = {
@@ -32,7 +33,7 @@ export class ShelfComponent implements OnInit {
 
   addBook(book: Book) {
     this.bookService.addBook(this.shelf, book)
-      .subscribe(books => this.books = books);
+      .subscribe(books => this.books = books, error => this.messageService.add('error', error, 5000));
   }
   removeBook(book: Book) {
     this.bookService.removeBook(book)

@@ -8,6 +8,9 @@ export class Book {
   small_image_url: string;
   author: string;
   average_rating: number;
+  original_publication_day: number;
+  original_publication_month: number;
+  original_publication_year: number;
 
   sameShelf(shelf: Shelf): boolean {
     return this.shelf.title === shelf.title;
