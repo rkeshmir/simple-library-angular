@@ -3,16 +3,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as X2JS from 'x2js';
 
 import {Book} from './book';
-import {MessageService} from './message.service';
 import {Observable, of, throwError } from 'rxjs';
-import {Hero} from './hero';
 import {catchError, tap, map} from 'rxjs/operators';
 import {Shelf} from './shelf';
-import {transformAll} from '@angular/compiler/src/render3/r3_ast';
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-};
 
 @Injectable({providedIn: 'root'})
 export class BookService {
@@ -76,7 +69,7 @@ export class BookService {
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     const targetUrl = 'https://www.goodreads.com/search/index.xml?key=Mk0S6w7YPzHvy5sUDipOQ&q=' + query;
     // @ts-ignore
-    return this.http.get<Book[]>(proxyUrl + targetUrl, {...httpOptions, responseType: 'text'})
+    return this.http.get<Book[]>(proxyUrl + targetUrl, {responseType: 'text'})
       .pipe(
         map(data => {
           console.log('pipe', typeof data);

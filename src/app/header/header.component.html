@@ -10,12 +10,12 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <div class="nav-link">
-          <a routerLink='/' activeClassName='menu selected'>HOME</a>
+          <a routerLink='/' class="menu" routerLinkActive="selected" [routerLinkActiveOptions]="{ exact: true }">HOME</a>
         </div>
       </li>
       <li class="nav-item">
         <div class="nav-link">
-          <a routerLink='/shelves' activeClassName='menu selected'>My Shelves</a>
+          <a routerLink='/shelves' class="menu" routerLinkActive="selected">My Shelves</a>
         </div>
       </li>
     </ul>

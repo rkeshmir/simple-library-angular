@@ -37,17 +37,17 @@
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Search book ..."
                aria-label="Recipient's username" aria-describedby="button-addon2"
-               name='searchInput' #query/>
+               name='searchInput' [(ngModel)]="query"/>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
             Search
           </button>
         </div>
       </div>
-      <span class='clear-search' (click)="foundBooks=[];query.value=''">
+      <span class='clear-search' (click)="foundBooks=[];query=''">
         <i class='fa fa-times mr-2'></i>
                         Clear Search
-                    </span>
+      </span>
     </form>
     <div class='found-books'>
 

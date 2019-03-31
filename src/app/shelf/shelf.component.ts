@@ -14,10 +14,12 @@ export class ShelfComponent implements OnInit {
   private books: Book[];
   private foundBooks: Book[];
   private shelf: Shelf;
+  private query: string;
   private Arr = Array;
   private round = Math.round;
 
-  constructor(private route: ActivatedRoute, private bookService: BookService, private messageService: MessageService) { }
+  constructor(private route: ActivatedRoute, private bookService: BookService,
+              private messageService: MessageService) { }
 
   ngOnInit() {
     this.shelf = {
@@ -33,14 +35,15 @@ export class ShelfComponent implements OnInit {
 
   addBook(book: Book) {
     this.bookService.addBook(this.shelf, book)
-      .subscribe(books => this.books = books, error => this.messageService.add('error', error, 5000));
+      .subscribe(books => this.books = books,
+          error => this.messageService.add('error', error, 0));
   }
   removeBook(book: Book) {
     this.bookService.removeBook(book)
       .subscribe(books => this.books = books);
   }
-  searchBooks(query: string) {
-    this.bookService.searchBooks(query)
+  searchBooks() {
+    this.bookService.searchBooks(this.query)
       .subscribe(books => this.foundBooks = books);
   }
 
